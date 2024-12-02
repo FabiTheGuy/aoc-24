@@ -11,4 +11,11 @@ day_01_exe = executable(
   sources: './src/day-01/main.cpp',
 )
 
+day_02_exe = executable(
+  'day-02',
+  sources: './src/day-02/main.cpp',
+)
+
+
 test('day-01', day_01_exe)
+test('day-02', day_02_exe)
