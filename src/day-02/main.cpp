@@ -21,7 +21,7 @@ std::vector<std::vector<int>> read_level_log(const std::string& path) {
         std::istringstream line_stream(line);
         std::vector<int> level;
         int num;
-        
+
         while (line_stream >> num)
             level.push_back(num);
 
@@ -33,16 +33,16 @@ std::vector<std::vector<int>> read_level_log(const std::string& path) {
 
 
 /**
- * @brief Checks wether a report is safe or not (levels are increasing or decreasing, 
+ * @brief Checks wether a report is safe or not (levels are increasing or decreasing,
  * difference between levels has to be in 1-3)
  */
 bool is_safe(const std::vector<int>& report) {
     for (std::size_t i = 0; i < report.size() - 1; ++i) {
         int diff = report[i + 1] - report[i];
 
-        if (std::abs(diff) < 1 || std::abs(diff) > 3) 
+        if (std::abs(diff) < 1 || std::abs(diff) > 3)
             return false;
-        if (i > 0 && (diff > 0) != (report[i] - report[i - 1] > 0)) 
+        if (i > 0 && (diff > 0) != (report[i] - report[i - 1] > 0))
             return false;
     }
 
@@ -58,10 +58,10 @@ bool is_safe_dampener(const std::vector<int>& report) {
         std::vector<int> modifiedReport;
 
         for (std::size_t j = 0; j < report.size(); ++j)
-            if (j != i) 
+            if (j != i)
                 modifiedReport.push_back(report[j]);
-        
-        if (is_safe(modifiedReport)) 
+
+        if (is_safe(modifiedReport))
             return true;
     }
 
@@ -70,8 +70,8 @@ bool is_safe_dampener(const std::vector<int>& report) {
 
 
 int main() {
-    auto report_lists = read_level_log("/home/fabitheguy/Documents/Development/aoc-24/data/day-02-input");
-    
+    auto report_lists = read_level_log("../data/day-02-input");
+
 
     /* ---------- Task One ---------- */
 
